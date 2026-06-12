@@ -76,9 +76,9 @@ INSTRUCCIONES PARA EL FEEDBACK:
 - Sé constructivo pero honesto. No exijas excelencia, valora si lo hizo bien en términos generales.
 - Si hay errores graves o pasos omitidos, mencionarlos claramente.
 - Al final, da una nota de 0% a 100% coherente con el desempeño general.
-- Termina con 2 tips concretos y accionables para mejorar.
+- SIEMPRE termina con exactamente 2 tips concretos y accionables. Esta sección es obligatoria.
 
-Responde en este formato exacto (en español):
+Responde en este formato exacto (en español). No omitas ninguna sección:
 
 ## Evaluación por criterio
 
@@ -94,8 +94,8 @@ Responde en este formato exacto (en español):
 
 ## Tips para mejorar
 
-1. [Tip concreto 1]
-2. [Tip concreto 2]`;
+1. [Tip concreto 1: qué hacer exactamente la próxima vez]
+2. [Tip concreto 2: qué hacer exactamente la próxima vez]`;
 }
 
 export default function Chat({ method, attitude, onReset }) {
@@ -198,7 +198,7 @@ export default function Chat({ method, attitude, onReset }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           model: "claude-sonnet-4-6",
-          max_tokens: 1000,
+          max_tokens: 2000,
           messages: [
             {
               role: "user",
@@ -227,36 +227,39 @@ export default function Chat({ method, attitude, onReset }) {
   const renderFeedback = (text) => {
     if (!text) return null;
     const lines = text.split("\n");
+    let inTipsSection = false;
     return lines.map((line, i) => {
       if (line.startsWith("## ")) {
-        return (
-          <h3 key={i} className="fb-section">
-            {line.replace("## ", "")}
-          </h3>
-        );
+        const title = line.replace(/^##\s*/, "");
+        if (title.toLowerCase().includes("tip")) inTipsSection = true;
+        else inTipsSection = false;
+        return <h3 key={i} className="fb-section">{title}</h3>;
       }
-      if (line.startsWith("**") && line.endsWith("**")) {
+      if (!line.trim()) return null;
+      // Bold-only lines = criterion title
+      if (/^\*\*[^*]+\*\*$/.test(line.trim())) {
         return (
           <p key={i} className="fb-criterion">
             {line.replace(/\*\*/g, "")}
           </p>
         );
       }
-      if (line.match(/^\d\./)) {
+      // Numbered lines OR lines inside tips section
+      if (/^\d[\.\)]/.test(line.trim()) || inTipsSection) {
         return (
           <p key={i} className="fb-tip">
-            {line}
+            {line.replace(/\*\*/g, "")}
           </p>
         );
       }
-      if (line.trim()) {
-        return (
-          <p key={i} className="fb-text">
-            {line}
-          </p>
+      // Inline bold: render with <strong>
+      if (line.includes("**")) {
+        const parts = line.split(/\*\*/).map((part, j) =>
+          j % 2 === 1 ? <strong key={j}>{part}</strong> : part
         );
+        return <p key={i} className="fb-text">{parts}</p>;
       }
-      return null;
+      return <p key={i} className="fb-text">{line}</p>;
     });
   };
 
