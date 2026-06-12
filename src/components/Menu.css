@@ -1,0 +1,281 @@
+.menu-container {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f8f7f4;
+}
+
+.menu-header {
+  text-align: center;
+  max-width: 560px;
+  margin-bottom: 2rem;
+}
+
+.logo-badge {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #f8f7f4;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.menu-header h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 0.5rem;
+}
+
+.menu-header p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.menu-section {
+  width: 100%;
+  max-width: 640px;
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.step {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #999;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step.active {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.step.done {
+  background: #2d9e75;
+  color: #fff;
+}
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.step-line.done {
+  background: #2d9e75;
+}
+
+.menu-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 1.5rem;
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .method-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.method-card {
+  background: #fff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+.method-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.method-teal:hover {
+  border-color: #2d9e75;
+}
+
+.method-coral:hover {
+  border-color: #d85a30;
+}
+
+.method-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.method-teal .method-badge {
+  background: #e1f5ee;
+  color: #0f6e56;
+}
+
+.method-coral .method-badge {
+  background: #faece7;
+  color: #993c1d;
+}
+
+.method-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.method-subtitle {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.method-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.method-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #444;
+}
+
+.step-num {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.method-teal .step-num {
+  background: #e1f5ee;
+  color: #0f6e56;
+}
+
+.method-coral .step-num {
+  background: #faece7;
+  color: #993c1d;
+}
+
+.method-desc {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 0.75rem;
+}
+
+.attitude-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.attitude-card {
+  background: #fff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.attitude-card:hover {
+  border-color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.attitude-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.attitude-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.attitude-desc {
+  font-size: 13px;
+  color: #888;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.back-btn:hover {
+  color: #1a1a1a;
+}
+
+.method-selected-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+
+.menu-footer {
+  max-width: 560px;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.menu-footer p {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.6;
+}
