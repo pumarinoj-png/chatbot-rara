@@ -421,3 +421,4 @@ export default function Chat({ method, attitude, onReset }) {
     </div>
   );
 }
+
