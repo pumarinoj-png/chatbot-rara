@@ -3,18 +3,18 @@ import "./Menu.css";
 
 const METHODS = [
   {
-    id: "RARA",
-    title: "Método RARA",
-    subtitle: "Conversación reflexiva",
+    id: "REFLEXION",
+    title: "Conversación para generar reflexión y aprendizaje",
+    subtitle: "Explorar juntos, entender y avanzar",
     steps: ["Reporte", "Alcance", "Reflexión conjunta", "Acuerdo de acciones"],
     description:
       "Para plantear un compromiso no cumplido con intención de reflexionar juntos, conocer su mirada y generar aprendizajes.",
     color: "teal",
   },
   {
-    id: "RARAS",
-    title: "Método RARAS",
-    subtitle: "Conversación directiva",
+    id: "DIRECTIVA",
+    title: "Conversación directiva para poner límites",
+    subtitle: "Marcar un límite y advertir consecuencias",
     steps: [
       "Reporte",
       "Alcance",
@@ -23,7 +23,7 @@ const METHODS = [
       "Siguientes pasos",
     ],
     description:
-      "Para cuando ya no quieres conversar tanto, necesitas marcar un límite y advertir consecuencias del incumplimiento.",
+      "Para cuando ya no quieres conversar tanto, necesitas marcar un límite claro y advertir las consecuencias del incumplimiento.",
     color: "coral",
   },
 ];
@@ -65,11 +65,11 @@ export default function Menu({ onStart }) {
   return (
     <div className="menu-container">
       <div className="menu-header">
-        <div className="logo-badge">RARA · RARAS</div>
+        <div className="logo-badge">Simulador de liderazgo</div>
         <h1>Simulador de conversaciones</h1>
         <p>
           Practica cómo plantear compromisos no cumplidos con tu equipo,
-          usando metodologías estructuradas.
+          usando conversaciones estructuradas.
         </p>
       </div>
 
@@ -80,7 +80,7 @@ export default function Menu({ onStart }) {
             <span className="step-line" />
             <span className="step">2</span>
           </div>
-          <h2>¿Qué método quieres practicar?</h2>
+          <h2>¿Qué tipo de conversación quieres practicar?</h2>
           <div className="method-grid">
             {METHODS.map((m) => (
               <button
@@ -88,7 +88,7 @@ export default function Menu({ onStart }) {
                 className={`method-card method-${m.color}`}
                 onClick={() => handleMethodSelect(m)}
               >
-                <div className="method-badge">{m.id}</div>
+                <div className="method-badge">{m.subtitle}</div>
                 <div className="method-title">{m.title}</div>
                 <div className="method-subtitle">{m.subtitle}</div>
                 <div className="method-steps">
@@ -118,7 +118,7 @@ export default function Menu({ onStart }) {
           </div>
           <h2>¿Qué actitud tendrá tu colaborador?</h2>
           <p className="method-selected-label">
-            Método seleccionado:{" "}
+            Conversación seleccionada:{" "}
             <strong>{selectedMethod?.title}</strong>
           </p>
           <div className="attitude-grid">
